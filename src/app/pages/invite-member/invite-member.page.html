@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Invite Member to {{ event?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email" placeholder="Enter member's email"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="sendInvitation()" [disabled]="!email">Send Invitation</ion-button>
+</ion-content>

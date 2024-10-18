@@ -1,0 +1,66 @@
+<!-- src/app/user-profile/user-profile.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Profile Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="newName" [disabled]="!editMode"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="newEmail" [disabled]="!editMode"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" (click)="toggleEdit()">
+        {{ editMode ? 'Cancel' : 'Edit' }}
+      </ion-button>
+      <ion-button expand="full" *ngIf="editMode" (click)="saveChanges()">
+        Save Changes
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Match History</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let match of userProfile.matches">
+          <ion-label>
+            <h2>{{ match.title }}</h2>
+            <p>Date: {{ match.date }}</p>
+            <p>Location: {{ match.location }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ratings</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let rating of userProfile.ratings">
+          <ion-label>
+            <h2>Match ID: {{ rating.matchId }}</h2>
+            <p>Rating: {{ rating.rating }}</p>
+            <p>Comment: {{ rating.comment }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

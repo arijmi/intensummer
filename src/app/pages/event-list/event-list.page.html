@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Events</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/event-create" expand="full">Create Event</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Filtre de recherche -->
+  <ion-item>
+    <ion-input [(ngModel)]="filter.date" placeholder="Date" (ionInput)="applyFilters()" clearInput></ion-input>
+    <ion-input [(ngModel)]="filter.location" placeholder="Location" (ionInput)="applyFilters()" clearInput></ion-input>
+    <ion-select [(ngModel)]="filter.type" placeholder="Type" (ionChange)="applyFilters()">
+      <ion-select-option value="Football">Football</ion-select-option>
+      <ion-select-option value="Basketball">Basketball</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Carte -->
+  <div id="map" style="height: 400px;"></div>
+
+  <!-- Liste des événements -->
+  <ion-list>
+    <ion-item *ngFor="let event of filteredEvents" (click)="viewEvent(event)">
+      <ion-label>
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.date }}</p>
+        <p>{{ event.location }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="outline" color="primary" (click)="editEvent(event); $event.stopPropagation();">Edit</ion-button>
+        <ion-button fill="outline" color="danger" (click)="deleteEvent(event); $event.stopPropagation();">Delete</ion-button>
+        <ion-button fill="outline" color="secondary" (click)="inviteMember(event); $event.stopPropagation();">Invite</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

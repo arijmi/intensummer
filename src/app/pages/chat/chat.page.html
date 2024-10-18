@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chat </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="chat-container">
+    <div class="chat-messages" #chatMessages>
+      <div *ngFor="let message of messages" [ngClass]="{'my-message': message.isMe, 'other-message': !message.isMe}">
+        <ion-icon name="football " [ngStyle]="{'color': message.isMe ? 'red' : 'white'}" class="football-icon"></ion-icon>
+        <div *ngIf="message.text" class="message-text">{{ message.text }}</div>
+        <img *ngIf="message.imageUrl" [src]="message.imageUrl" class="message-image" />
+      </div>
+    </div>
+    <div class="chat-input">
+      <ion-button (click)="fileInput.click()">
+        <ion-icon name="image" slot="icon-only" color="Blank"></ion-icon>
+      </ion-button>
+      <ion-button (click)="addFile()">
+        <ion-icon name="attach" slot="icon-only" color="Blank"></ion-icon>
+      </ion-button>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput style="display: none;">
+      <input type="text" [(ngModel)]="newMessage" placeholder="Type your message...">
+      <ion-button (click)="sendMessage()">
+        <ion-icon name="send" slot="icon-only" color="Blank"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ team?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Team Members</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let member of team?.members">
+          <ion-label>{{ member }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">Add Member</ion-label>
+        <ion-input [(ngModel)]="newMember"></ion-input>
+        <ion-button (click)="addMember()">Add</ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Performance</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Wins: {{ team?.performance.wins }}</p>
+      <p>Losses: {{ team?.performance.losses }}</p>
+
+      <ion-item>
+        <ion-label position="stacked">Add Wins</ion-label>
+        <ion-input type="number" [(ngModel)]="wins"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Add Losses</ion-label>
+        <ion-input type="number" [(ngModel)]="losses"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="trackPerformance(wins || 0, losses || 0)">Update Performance</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

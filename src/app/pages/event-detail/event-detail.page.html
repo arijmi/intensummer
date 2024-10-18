@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ event.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ event.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Date: {{ event.date }}</p>
+      <p>Location: {{ event.location }}</p>
+      <p>Description: {{ event.description }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" (click)="sendInvitations()">Send Invitations</ion-button>
+  <ion-button expand="full" color="success" (click)="manageInscriptions()">Manage Inscriptions</ion-button>
+</ion-content>
+

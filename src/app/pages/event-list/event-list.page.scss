@@ -1,0 +1,28 @@
+/* Style pour le conteneur de la carte */
+/* Vous pouvez définir la hauteur dans le fichier SCSS ou directement dans le template */
+#map {
+    height: 100%; /* ou une hauteur spécifique comme 400px */
+  }
+  
+  
+  /* Espacement entre les éléments de la liste */
+  ion-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Style pour les boutons dans la liste des événements */
+  ion-buttons {
+    margin-left: auto;
+  }
+  
+  /* Style pour les titres d'événements */
+  ion-label h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  ion-label p {
+    margin: 0;
+    color: #666;
+  }
+  

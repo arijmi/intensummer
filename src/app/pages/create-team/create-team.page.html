@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Team Name</ion-label>
+    <ion-input [(ngModel)]="teamName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Add Member</ion-label>
+    <ion-input #memberInput></ion-input>
+    <ion-button (click)="addMember(memberInput.value); memberInput.value=''">Add</ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let member of members">
+      <ion-label>{{ member }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="createTeam()">Create Team</ion-button>
+</ion-content>
